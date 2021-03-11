@@ -34,6 +34,8 @@ public class Main {
 		account3.addInterest(10);
 		System.out.println("Suma in contul 3 este de "+account3.getBalance()+" RON");
 		
+		Bank banca = new Bank();
+		
 		
 	}
 
