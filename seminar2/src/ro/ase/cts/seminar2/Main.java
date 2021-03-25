@@ -20,13 +20,18 @@ public class Main {
 		
 		try {
 			c.withdraw(208);
-			try {
-				c.transfer(200, account2);
-			} catch (IllegalTransferException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (InsufficientFundsException e) {
+			c.setNotificationService( new EmailNotificationService());
+			c.whitdraw(200);
+			c.setNotificationService( new NotificationService() {
+				@override
+				public void sendNotification(String message) {
+					System.out.println("Sent PUSH notification with message: " + message);
+				}
+			});
+			c.withdraw(200);
+			c.transfer(100, c);
+			
+		} catch (InsufficientFundsException e | IllegalTransferException e) {
 			System.out.println(e.getMessage());
 		}
 		System.out.println("Suma disponibila este de "+c.getBalance()+" RON.");
@@ -36,6 +41,8 @@ public class Main {
 		System.out.println("Suma in contul 3 este de "+account3.getBalance()+" RON");
 		Bank banca = new Bank();
 		BankAccount account4 = banca.openBankAccount(AccountType.CURRENT);
+		
+		
 		
 	}
 
