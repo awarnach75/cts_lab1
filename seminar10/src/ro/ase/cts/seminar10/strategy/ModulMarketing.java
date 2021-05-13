@@ -6,12 +6,13 @@ public class ModulMarketing {
 	public void setCurrentStrategy(MarketingStrategyInterface currentStrategy) {
 		this.currentStrategy = currentStrategy;
 	}
-	
+
 	public double getBonus(double base) {
-		if(currentStrategy != null) {
+		if (currentStrategy != null) {
 			return currentStrategy.calculateBonus(base);
 		} else {
 			throw new UnsupportedOperationException();
 		}
 	}
+
 }
